@@ -1,0 +1,50 @@
+[package]
+edition = "2024"
+name = "rustyddr"
+version = "0.1.0"
+authors = ["Slava <pchala@gmail.com>"]
+resolver = "2"
+
+[[bin]]
+name = "rustyddr"
+test = false
+bench = false
+
+
+[dependencies]
+
+cortex-m = { version = "0.7", features = ["inline-asm"] }
+cortex-m-rt = "0.7"
+defmt = "1.0"
+defmt-rtt = "1.1"
+panic-probe = { version = "1.0", features = ["print-defmt"] }
+futures = { version = "0.3", default-features = false, features = ["async-await"] }
+
+# Embassy Framework
+embassy-executor = { version = "~0.9", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+
+
+
+embassy-usb = { version = "0.5", features = ["defmt"] }
+embassy-futures = "0.1.1"
+
+
+embassy-time = { version = "0.5", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-rp = { version = "0.9", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
+
+
+# Utilities
+usbd-hid = "0.9"
+fixed = "1.27.0"
+pio = "0.3"
+
+[profile.release]
+debug = 2
+lto = true
+opt-level = 'z'
+
+[profile.dev]
+debug = 2
+lto = true
+opt-level = "z"
+
