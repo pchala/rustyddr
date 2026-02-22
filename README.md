@@ -23,7 +23,7 @@ RustyDDR solves this at the hardware level. By leveraging the RP2040's PIO, both
 * **PIO-Driven LEDs:** LED logic utilizes a separate PIO block with merged TX FIFOs, allowing 8-LED WS2812B updates (P1 Green / P2 Blue) without stalling the main loop.
 * **Composite HID:** Aggregates dual-mat inputs into a single 16-key USB gamepad interface.
 
-## 🧰 Hardware Interface
+## 🧰 Hardware
 
 ![RustyDDR Internals](media/inCase.jpg)
 
@@ -35,7 +35,7 @@ RustyDDR solves this at the hardware level. By leveraging the RP2040's PIO, both
 | **GP1** | PIO0 SM1 | Mat 2 Data | Open-Drain |
 | **GP16** | PIO1 SM0 | WS2812 Data | DOUT |
 | **VBUS** | Power | 5V Supply | LED Power |
-| **3V3** | Power | 3.3V Logic | IC Power |
+| **3V3** | Power | 3.3V Logic | Mat Power |
 | **GND** | Ground | Ground | Common |
 
 > **Impedance Note:** Joybus is Open-Drain. While internal pull-ups function for short cable runs, external **1kΩ pull-ups** to 3.3V are strongly recommended for signal stability.
@@ -66,5 +66,7 @@ RustyDDR solves this at the hardware level. By leveraging the RP2040's PIO, both
 ## 📝 License
 
 MIT License.
+
+## In Action
 
 ![RustyDDR in Action](media/inAction.gif)
